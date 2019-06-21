@@ -1,0 +1,26 @@
+<html>
+  <body>
+
+    <div class="posts">
+      <% posts.each do |post| %>
+        <div class="post">
+
+          <h2 class="title">
+            <a href="/show_post/<%= post['id']%>"><%= post['title'] %></a>
+          </h2>
+
+          <small class="meta">
+            <span class="author">by <%= post['author'] %> -</span>
+            <em class="created_at"><%= post['created_at'] %></em>
+          </small>
+          <a href="/edit_post/<%= post['id'] %>">Edit Post</a>
+          <form action="/delete_post/<%= post['id'] %>" method="post" style='display: inline'>
+            <input type="submit" value="Delete" />
+          </form>
+        </div>
+        <hr />
+      <% end %>
+    </div>
+    <a href="/new_post">Create a New Post</a>
+  </body>
+</html>
